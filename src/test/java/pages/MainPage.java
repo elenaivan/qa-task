@@ -6,8 +6,4 @@ public class MainPage extends BaseClass{
         driver.get(url);
     }
 
-    public void quitTest() {
-        driver.quit();
-    }
-
 }

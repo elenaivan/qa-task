@@ -10,8 +10,8 @@ public class FirstTest {
         System.out.println("Hello world. This is Elena here");
 
         MainPage mp = new MainPage();
-        mp.openMainPage("http://freeletics.com");
+        mp.openMainPage("http://xing.com");
 
-        mp.quitTest();
+        mp.closeBrowser();
     }
 }
