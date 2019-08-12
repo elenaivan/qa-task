@@ -1,4 +1,4 @@
-/Users/eivan/IdeaProjects/qatask/src/test/java/pages/AbstractPageObject.java
+/Users/eivan/IdeaProjects/qatask/src/test/java/support/AbstractPageObject.java
 /Users/eivan/IdeaProjects/qatask/src/test/java/pages/WebsiteMainPageObject.java
 /Users/eivan/IdeaProjects/qatask/src/test/java/support/AbstractSeleniumTest.java
 /Users/eivan/IdeaProjects/qatask/src/test/java/test/FirstTest.java

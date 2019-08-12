@@ -8,6 +8,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 public class AbstractSeleniumTest {
 
     protected WebDriver driver;
+    protected StringBuilder testStepDetails = new StringBuilder();
 
     @Before
     public void initialize() {

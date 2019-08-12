@@ -12,7 +12,7 @@ public class FirstTest extends AbstractSeleniumTest {
     @Test
     public void display() {
 
-        WebsiteMainPageObject mp = new WebsiteMainPageObject(driver);
+        WebsiteMainPageObject mp = new WebsiteMainPageObject(driver, testStepDetails);
 
         mp.goToPage(url);
         Assert.assertTrue(driver.getTitle().contains("XING"));

@@ -5,8 +5,8 @@ import support.AbstractPageObject;
 
 public class WebsiteMainPageObject extends AbstractPageObject {
 
-    public WebsiteMainPageObject(WebDriver driver) {
-        super(driver);
+    public WebsiteMainPageObject(WebDriver driver, StringBuilder steps) {
+        super(driver, steps);
     }
 
 }
