@@ -1,16 +1,12 @@
 package pages;
 
 import org.openqa.selenium.WebDriver;
-import support.AbstractBaseClass;
+import support.AbstractPageObject;
 
-public class WebsiteMainPageObject extends AbstractBaseClass {
+public class WebsiteMainPageObject extends AbstractPageObject {
 
     public WebsiteMainPageObject(WebDriver driver) {
         super(driver);
-    }
-
-    public void goToPage(String url) {
-        driver.get(url);
     }
 
 }
