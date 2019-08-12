@@ -14,6 +14,23 @@ For Mac users, you can use homebrew to install the prerequisites:
 homebrew install maven
 homebrew install chromedriver 
 
+# More instructions can be found here:
+
+https://maven.apache.org/download.cgi
+
+https://maven.apache.org/install.html 
+
+https://chromedriver.chromium.org/downloads
+
+
+# Useful links
+
+https://www.seleniumhq.org/docs/03_webdriver.jsp#setting-up-a-selenium-webdriver-project
+
+
+
+
+
 
 
 
