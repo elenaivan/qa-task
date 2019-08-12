@@ -1,17 +1,19 @@
 package test;
 
+import org.junit.Assert;
 import org.junit.Test;
-import pages.MainPage;
+import org.openqa.selenium.WebDriver;
+import pages.WebsiteMainPageObject;
+import support.AbstractBaseClass;
 
-public class FirstTest {
+public class FirstTest extends AbstractBaseClass {
+
+    public String url = "http://xing.com";
 
     @Test
     public void display() {
-        System.out.println("Hello world. This is Elena here");
-
-        MainPage mp = new MainPage();
-        mp.openMainPage("http://xing.com");
-
-        mp.closeBrowser();
+        WebsiteMainPageObject mp = new WebsiteMainPageObject(driver);
+        mp.goToPage(url);
+        Assert.assertTrue(driver.getTitle().contains("XING"));
     }
 }
