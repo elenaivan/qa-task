@@ -1,4 +1,5 @@
 support/AbstractPageObject.class
+pages/CareersPageObject.class
 pages/WebsiteMainPageObject.class
 test/FirstTest.class
 support/AbstractSeleniumTest.class
