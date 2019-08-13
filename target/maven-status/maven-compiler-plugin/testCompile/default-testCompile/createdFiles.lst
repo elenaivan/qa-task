@@ -1,5 +1,7 @@
-support/AbstractPageObject.class
 pages/CareersPageObject.class
+test/QAPositionTest.class
 pages/WebsiteMainPageObject.class
-test/FirstTest.class
 support/AbstractSeleniumTest.class
+pages/OpenPositionsPageObject.class
+pages/JobDescriptionPageObject.class
+support/AbstractPageObject.class

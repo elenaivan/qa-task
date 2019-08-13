@@ -3,6 +3,7 @@ package support;
 import org.openqa.selenium.By;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -21,19 +22,20 @@ public class AbstractPageObject {
     }
 
     public void goToPage(String url) {
-        logTestStepDetail("User is trying to open: " + url + "\n");
+        logTestStepDetail("User is trying to open: " + url);
         driver.get(url);
     }
 
-    protected boolean waitForElementVisible(By elementSelector) {
+    protected WebElement waitForElementVisible(By elementSelector) {
         WebDriverWait wait = new WebDriverWait(driver, 10);
+        WebElement element;
 
         try {
-            wait.until(ExpectedConditions.visibilityOfElementLocated(elementSelector));
+            element = wait.until(ExpectedConditions.visibilityOfElementLocated(elementSelector));
+            return element;
         } catch (TimeoutException te) {
-            return false;
+            return null;
         }
-        return true;
     }
 
 }

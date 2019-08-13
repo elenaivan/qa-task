@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
-Test set: test.FirstTest
+Test set: test.QAPositionTest
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 5.285 sec
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 6.505 sec

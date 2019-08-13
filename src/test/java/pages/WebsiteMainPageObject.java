@@ -2,7 +2,6 @@ package pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import support.AbstractPageObject;
 
 public class WebsiteMainPageObject extends AbstractPageObject {
@@ -14,7 +13,7 @@ public class WebsiteMainPageObject extends AbstractPageObject {
     }
 
     private boolean isCareersLinkDisplayed() {
-        return waitForElementVisible(careersLinkSelector);
+        return waitForElementVisible(careersLinkSelector) != null;
     }
 
     public CareersPageObject openCareersPage() {
