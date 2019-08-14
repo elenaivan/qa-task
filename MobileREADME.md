@@ -1,47 +1,23 @@
-# Automated testing with Java, Selenium WebDriver and Maven
+# Setting it up on mobile
 
-This is a first version of an automation testing suite with Java, Selenium WebDriver and Maven. The tests run locally at the moment, on Chrome browser.
+# Q1: Which parts of the code you provided would need to be adapted to run the same tests in an Android phone, using the same browser, in the tool you chose?
 
-# Prerequisites / Setup
+* we need to connect the Appium framework to the configuration of the tests  
+* we need to have Chrome browser installed on Android phone 
+* chromedriver is already there, so we don't need to install it again 
+* the setup should be modified to run against a server, and not locally
+* this way, we can extend the DesiredCapabilities with a new DesiredCapability for Chrome browser using Android as platform 
 
-- have JRE installed locally
-- have Maven installed locally
-- have ChromeDriver installed locally
+# Q2: How could we run these tests in a physical Android phone connected to your laptop? Does the laptop need any extra software/hardware to run them properly?
 
-For Mac users, you can use homebrew to install the prerequisites:
-
-* `homebrew install maven`
-* `homebrew install chromedriver`
-
-This automatically adds them to the PATH.
-
-For other operating systems, it is a bit more complicated: you need to install the dependencies locally and then add their location to the PATH, and make sure it was updated.
-
-More instructions can be found here:
-
-* https://maven.apache.org/download.cgi
-
-* https://maven.apache.org/install.html
-
-* https://chromedriver.chromium.org/downloads
-
-# Running the tests on Selenium Grid server
-
-Usually, tests run on a Selenium Grid server. What is done in this project, is a basic automation testing functionality that only runs the tests on the ChromeDriver installed locally.
-
-In order to be run on a server, you need to:
-* add selenium-server as a Maven dependency
-* install it also locally
-* add selenium-server as a Maven dependency
-* start the local hub for the selenium server, e.g. `java -jar selenium-server-standalone-<version>.jar -role hub`
-* start the node on which the tests will run, e.g. `java -jar selenium-server-standalone-<version>.jar -role node  -hub http://localhost:4444/grid/register`
-* change the configuration of the tests to use this selenium server
-* add Chrome for example in DesiredCapabilities, e.g. `DesiredCapabilities capability = DesiredCapabilities.chrome();`
-* setup capabilities properties, such as browser version or platform
-
-In this way, running the tests on different browsers is easier, because you set them up as different capabilities.
+* we need to have Android Studio installed on our laptop 
 
 
-# Useful links
 
-https://www.seleniumhq.org/docs/03_webdriver.jsp#setting-up-a-selenium-webdriver-project
+# Q3: What would be the main changes if the website was now part of a hybrid Android app?
+
+# Q4: And if it was a native app?
+
+* the PageObjects would be different and require different selectors for the mobile app 
+* to run the tests, we need to have the app installed previously on the device, and make sure it was launched 
+* the capabilities for running have to be changed 
