@@ -11,8 +11,8 @@ The tests run locally at the moment, on Chrome.
 
 For Mac users, you can use homebrew to install the prerequisites:
 
-homebrew install maven
-homebrew install chromedriver 
+`homebrew install maven`
+`homebrew install chromedriver`
 
 
 # Future plans
