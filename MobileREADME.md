@@ -25,6 +25,8 @@ Q3: What would be the main changes if the website was now part of a hybrid Andro
 Q4: And if it was a native app?
 
 * all the PageObjects would be different and require different selectors for the mobile app 
-* flows might be different
+* we would need to write methods to interact with these objects from the mobile pages (e.g. tap, wait, swipe, scroll etc.)
+* flows and available features might be different than on an website 
+* the tests would have to be adapted 
 * to run the tests, we need to have the app installed previously on the device, and make sure it was launched 
-* the capabilities for running have to be changed 
+* configuration changes might be needed 
