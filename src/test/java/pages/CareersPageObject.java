@@ -9,11 +9,10 @@ public class CareersPageObject extends AbstractPageObject {
 
     private By teamsSectionId = By.id("SectionTeams");
 
-    // these methods can be reused for any team
+    // these selectors can be reused for any team
     private By chooseTeamSelector(String type) {
         return By.cssSelector("a[href=\"#"+type+"\"]");
     }
-
     private By getTeamOpenPositionsLinkSelector(String type) {
         return By.cssSelector("#"+type+" > div > a");
     }
@@ -23,11 +22,10 @@ public class CareersPageObject extends AbstractPageObject {
     }
 
     public boolean isCareersPageLoaded() {
-        return waitForElementVisible(teamsSectionId) != null;
+        return isPageLoaded(teamsSectionId);
     }
 
     public void goToTeamOpenPositions(String teamType) {
-
         WebElement chooseTeamLink = waitForElementVisible(chooseTeamSelector(teamType));
 
         if (chooseTeamLink != null) {
@@ -35,16 +33,13 @@ public class CareersPageObject extends AbstractPageObject {
             chooseTeamLink.click();
 
             WebElement teamOpenPositions = waitForElementVisible(getTeamOpenPositionsLinkSelector(teamType));
-
             if(teamOpenPositions != null) {
                 teamOpenPositions.click();
             } else {
                 logTestStepDetail("Team open positions button could not be found, please check.");
             }
-
         } else {
             logTestStepDetail("Team link could not be found, please check.");
         }
     }
-
 }

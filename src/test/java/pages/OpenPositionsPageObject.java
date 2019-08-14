@@ -17,8 +17,8 @@ public class OpenPositionsPageObject extends AbstractPageObject {
         super(driver, steps);
     }
 
-    public boolean isPageLoaded() {
-        return waitForElementVisible(productEngineeringSection) != null;
+    public boolean isOpenPositionsPageLoaded() {
+        return isPageLoaded(productEngineeringSection);
     }
 
     public void goToJobDescription(String job) {
@@ -32,5 +32,4 @@ public class OpenPositionsPageObject extends AbstractPageObject {
             logTestStepDetail("Job could not be found, please check.");
         }
     }
-
 }

@@ -15,7 +15,6 @@ public class QAPositionTest extends AbstractSeleniumTest {
     public void openCareersPage() {
         WebsiteMainPageObject freeleticsWebsite = new WebsiteMainPageObject(driver, testStepDetails);
         freeleticsWebsite.goToPage(url);
-        Assert.assertTrue(driver.getTitle().contains("FREELETICS"));
         freeleticsWebsite.openCareersPage();
 
         CareersPageObject careersPage = new CareersPageObject(driver, testStepDetails);
@@ -24,21 +23,21 @@ public class QAPositionTest extends AbstractSeleniumTest {
         careersPage.goToTeamOpenPositions(teamType);
 
         OpenPositionsPageObject openPositionsPage = new OpenPositionsPageObject(driver, testStepDetails);
-        Assert.assertTrue("Open positions failed to open.", openPositionsPage.isPageLoaded());
+        Assert.assertTrue("Open positions failed to open.", openPositionsPage.isOpenPositionsPageLoaded());
         openPositionsPage.goToJobDescription(job);
 
         JobDescriptionPageObject jobDescriptionPage = new JobDescriptionPageObject(driver, testStepDetails);
-        Assert.assertTrue("Job description page failed to open.", jobDescriptionPage.isPageLoaded());
+        Assert.assertTrue("Job description page failed to open.", jobDescriptionPage.isJobDescriptionPageLoaded());
 
         // title assertion
         String jobTitle = jobDescriptionPage.getJobTitle().toUpperCase();
-        System.out.println(jobTitle);
         Assert.assertTrue("Job title is not the same as you expect from the test.", jobTitle.contains(job.toUpperCase()));
 
         // description assertion
         String jobDescription = jobDescriptionPage.getJobDescription();
         Assert.assertTrue("Job description appears to be empty.", !jobDescription.isEmpty());
 
+        // job responsibilities and requirements
         int jobResponsibilitiesTotalNumber = jobDescriptionPage.getJobResponsibilities();
         Assert.assertEquals("Number of responsibilities is not met.", jobResponsibilitiesTotalNumber, 9 );
 
@@ -48,12 +47,10 @@ public class QAPositionTest extends AbstractSeleniumTest {
         // apply now button
         jobDescriptionPage.applyToJob();
 
+        // new job application page
         ApplicationPageObject applicationPage = new ApplicationPageObject(driver, testStepDetails);
-        Assert.assertTrue("Application page failed to open.", applicationPage.isPageLoaded());
-
-        String applicationJobTitle = applicationPage.getJobTitle();
-        System.out.println(applicationJobTitle);
-
+        Assert.assertTrue("Application page failed to open.", applicationPage.isApplicationPageLoaded());
+        String applicationJobTitle = applicationPage.getJobTitle().toUpperCase();
+        Assert.assertEquals("Application job title does not match the previous job title", jobTitle, applicationJobTitle);
     }
-
 }

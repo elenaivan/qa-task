@@ -3,7 +3,6 @@ package pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import support.AbstractPageObject;
-import support.AbstractSeleniumTest;
 
 public class JobDescriptionPageObject extends AbstractPageObject {
 
@@ -21,8 +20,8 @@ public class JobDescriptionPageObject extends AbstractPageObject {
         super(driver, steps);
     }
 
-    public boolean isPageLoaded() {
-        return waitForElementVisible(sectionDescriptionSelector) != null;
+    public boolean isJobDescriptionPageLoaded() {
+        return isPageLoaded(sectionDescriptionSelector);
     }
 
     public String getJobTitle() {
@@ -50,10 +49,6 @@ public class JobDescriptionPageObject extends AbstractPageObject {
     public void applyToJob() {
         logTestStepDetail("User wants to apply to the job!");
         waitForElementVisible(applyNowButton).click();
-
-        // thought it will open a new tab, but weirdly it doesn't
-        AbstractSeleniumTest seleniumTest = new AbstractSeleniumTest();
-        seleniumTest.switchToNewTab();
+        switchToNewTab();
     }
-
 }

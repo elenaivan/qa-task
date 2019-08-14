@@ -25,5 +25,4 @@ public class WebsiteMainPageObject extends AbstractPageObject {
             logTestStepDetail("Element is not on the page! Careers page couldn't be opened");
         }
     }
-
 }

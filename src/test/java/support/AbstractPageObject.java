@@ -8,6 +8,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.List;
+import java.util.Set;
 
 public class AbstractPageObject {
 
@@ -54,4 +55,29 @@ public class AbstractPageObject {
         }
     }
 
+    // checks if a page is loaded by the presence of an selector
+    protected boolean isPageLoaded(By selector) {
+        return waitForElementVisible(selector) != null;
+    }
+
+    // switches to a new tab
+    protected void switchToNewTab() {
+        Set<String> handles = driver.getWindowHandles();
+        if(handles.size() > 1) {
+            try {
+                String currentHandle = driver.getWindowHandle();
+
+                for (String handle : handles) {
+                    if (!handle .equals(currentHandle)) {
+                        driver.switchTo().window(handle);
+                    }
+                }
+            } catch(NullPointerException exception) {
+                logTestStepDetail("Something didn't work at switching tabs.");
+            }
+        }
+        else {
+            logTestStepDetail("No new tab was opened.");
+        }
+    }
 }
