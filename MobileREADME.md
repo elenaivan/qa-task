@@ -2,13 +2,15 @@ Setting it up on mobile
 
 Q1: Which parts of the code you provided would need to be adapted to run the same tests in an Android phone, using the same browser, in the tool you chose?
 
-* we need to connect the mobile framework (Appium or Calabash) to the configuration of the tests  
+* we need to add the mobile framework (Appium or Calabash) to the configuration of the tests  
 * we need to have Chrome browser installed on Android phone 
-* chromedriver is already there, so we don't need to install it again 
+* chromedriver is already in the project
 * the setup should be modified to run against a server, and not locally
 * this way, we can extend the DesiredCapabilities with a new DesiredCapability for Chrome browser using Android as platform 
 
 Q2: How could we run these tests in a physical Android phone connected to your laptop? Does the laptop need any extra software/hardware to run them properly?
+
+* as far as I know from my current job, no special configuration is needed, because you just connect the device to the laptop and the framework recognizes that there is a device connected and starts the tests on this
 
 * we need to install on our laptop either Android Studio, or Android SDK tools (they are included in the Android studio), to be able to access the Android debugger (adb)
 * the phone needs to be connected to the laptop in development mode 
