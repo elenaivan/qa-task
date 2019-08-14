@@ -69,14 +69,14 @@ public class AbstractPageObject {
 
                 for (String handle : handles) {
                     if (!handle .equals(currentHandle)) {
+                        driver.close(); //otherwise, you will have the browser window still opened at the end of the test
                         driver.switchTo().window(handle);
                     }
                 }
             } catch(NullPointerException exception) {
                 logTestStepDetail("Something didn't work at switching tabs.");
             }
-        }
-        else {
+        } else {
             logTestStepDetail("No new tab was opened.");
         }
     }

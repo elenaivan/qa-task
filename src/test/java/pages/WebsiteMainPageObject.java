@@ -20,8 +20,7 @@ public class WebsiteMainPageObject extends AbstractPageObject {
         if (isCareersLinkDisplayed()) {
             driver.findElement(careersLinkSelector).click();
             logTestStepDetail("User is trying to go to Careers page");
-        }
-        else {
+        } else {
             logTestStepDetail("Element is not on the page! Careers page couldn't be opened");
         }
     }
