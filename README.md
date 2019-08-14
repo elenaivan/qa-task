@@ -45,11 +45,3 @@ In this way, running the tests on different browsers is easier, because you set 
 # Useful links
 
 https://www.seleniumhq.org/docs/03_webdriver.jsp#setting-up-a-selenium-webdriver-project
-
-
-
-
-
-
-
-
