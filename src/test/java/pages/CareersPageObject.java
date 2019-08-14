@@ -9,18 +9,13 @@ public class CareersPageObject extends AbstractPageObject {
 
     private By teamsSectionId = By.id("SectionTeams");
 
-    private By productEngineeringTeamButton = By.cssSelector("a[href=\"/en/corporate/jobs#product-engineering\"]");
-
-    // this can be reused for any team
+    // these methods can be reused for any team
     private By chooseTeamSelector(String type) {
         return By.cssSelector("a[href=\"#"+type+"\"]");
     }
 
-/*  Todo: make this work
-    it doesn't work at the moment, when using it below in the method, returns a NULL pointer exception
-    the selector might need rework */
     private By getTeamOpenPositionsLinkSelector(String type) {
-        return By.cssSelector("a[href=\"/en/corporate/jobs#"+type+"\"]");
+        return By.cssSelector("#"+type+" > div > a");
     }
 
     public CareersPageObject(WebDriver driver, StringBuilder steps) {
@@ -31,7 +26,7 @@ public class CareersPageObject extends AbstractPageObject {
         return waitForElementVisible(teamsSectionId) != null;
     }
 
-    public OpenPositionsPageObject goToTeamOpenPositions(String teamType) {
+    public void goToTeamOpenPositions(String teamType) {
 
         WebElement chooseTeamLink = waitForElementVisible(chooseTeamSelector(teamType));
 
@@ -39,14 +34,16 @@ public class CareersPageObject extends AbstractPageObject {
             logTestStepDetail("User is going to the " + teamType + " open positions button");
             chooseTeamLink.click();
 
-            // unfortunately, we break the reusability here of the method to go to the Product Engineering team
+            WebElement teamOpenPositions = waitForElementVisible(getTeamOpenPositionsLinkSelector(teamType));
 
-            driver.findElement(productEngineeringTeamButton).click();
-            return new OpenPositionsPageObject(driver, testStepDetails);
+            if(teamOpenPositions != null) {
+                teamOpenPositions.click();
+            } else {
+                logTestStepDetail("Team open positions button could not be found, please check.");
+            }
 
         } else {
             logTestStepDetail("Team link could not be found, please check.");
-            return null;
         }
     }
 

@@ -7,6 +7,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.util.List;
+
 public class AbstractPageObject {
 
     protected WebDriver driver;
@@ -26,13 +28,27 @@ public class AbstractPageObject {
         driver.get(url);
     }
 
+    // waits until an element is displayed and returns the element, or null
     protected WebElement waitForElementVisible(By elementSelector) {
-        WebDriverWait wait = new WebDriverWait(driver, 10);
+        WebDriverWait wait = new WebDriverWait(driver, 5);
         WebElement element;
 
         try {
             element = wait.until(ExpectedConditions.visibilityOfElementLocated(elementSelector));
             return element;
+        } catch (TimeoutException te) {
+            return null;
+        }
+    }
+
+    // waits until a list of elements is displayed and returns the list, or null
+    protected List<WebElement> waitForElementsVisible(By elementSelector) {
+        WebDriverWait wait = new WebDriverWait(driver, 5);
+        List<WebElement> elements;
+
+        try {
+            elements = wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(elementSelector));
+            return elements;
         } catch (TimeoutException te) {
             return null;
         }

@@ -1,6 +1,7 @@
 /Users/eivan/IdeaProjects/qatask/src/test/java/test/QAPositionTest.java
 /Users/eivan/IdeaProjects/qatask/src/test/java/pages/JobDescriptionPageObject.java
 /Users/eivan/IdeaProjects/qatask/src/test/java/support/AbstractPageObject.java
+/Users/eivan/IdeaProjects/qatask/src/test/java/pages/ApplicationPageObject.java
 /Users/eivan/IdeaProjects/qatask/src/test/java/pages/WebsiteMainPageObject.java
 /Users/eivan/IdeaProjects/qatask/src/test/java/pages/CareersPageObject.java
 /Users/eivan/IdeaProjects/qatask/src/test/java/support/AbstractSeleniumTest.java

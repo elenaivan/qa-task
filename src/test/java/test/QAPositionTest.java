@@ -2,10 +2,7 @@ package test;
 
 import org.junit.Assert;
 import org.junit.Test;
-import pages.CareersPageObject;
-import pages.OpenPositionsPageObject;
-import pages.WebsiteMainPageObject;
-import pages.JobDescriptionPageObject;
+import pages.*;
 import support.AbstractSeleniumTest;
 
 public class QAPositionTest extends AbstractSeleniumTest {
@@ -19,23 +16,43 @@ public class QAPositionTest extends AbstractSeleniumTest {
         WebsiteMainPageObject freeleticsWebsite = new WebsiteMainPageObject(driver, testStepDetails);
         freeleticsWebsite.goToPage(url);
         Assert.assertTrue(driver.getTitle().contains("FREELETICS"));
+        freeleticsWebsite.openCareersPage();
 
-        CareersPageObject careersPage = freeleticsWebsite.openCareersPage();
+        CareersPageObject careersPage = new CareersPageObject(driver, testStepDetails);
+        // the message is used in case the assertion fails
         Assert.assertTrue("Careers page failed to open.", careersPage.isCareersPageLoaded());
+        careersPage.goToTeamOpenPositions(teamType);
 
-        OpenPositionsPageObject openPositions = careersPage.goToTeamOpenPositions(teamType);
-        Assert.assertTrue("Open positions failed to open.", ((OpenPositionsPageObject) openPositions).isPageLoaded());
+        OpenPositionsPageObject openPositionsPage = new OpenPositionsPageObject(driver, testStepDetails);
+        Assert.assertTrue("Open positions failed to open.", openPositionsPage.isPageLoaded());
+        openPositionsPage.goToJobDescription(job);
 
-        JobDescriptionPageObject jobDescription = openPositions.goToJobDescription(job);
-        Assert.assertTrue("Job description page failed to open.", jobDescription.isPageLoaded());
+        JobDescriptionPageObject jobDescriptionPage = new JobDescriptionPageObject(driver, testStepDetails);
+        Assert.assertTrue("Job description page failed to open.", jobDescriptionPage.isPageLoaded());
 
-        int jobResponsibilitiesTotalNumber = jobDescription.getJobResponsibilities();
-        Assert.assertTrue("Number of responsibilities is not met.", jobResponsibilitiesTotalNumber == 9 );
-        System.out.println("There are " + jobResponsibilitiesTotalNumber + " responsibilities for this job");
+        // title assertion
+        String jobTitle = jobDescriptionPage.getJobTitle().toUpperCase();
+        System.out.println(jobTitle);
+        Assert.assertTrue("Job title is not the same as you expect from the test.", jobTitle.contains(job.toUpperCase()));
 
-        int candidateRequirementsTotalNumber = jobDescription.getCandidateRequirementsList();
-        Assert.assertTrue("Number of candidate requirements is not met.", candidateRequirementsTotalNumber == 7 );
-        System.out.println("There are " + candidateRequirementsTotalNumber + " candidate requirements for this job");
+        // description assertion
+        String jobDescription = jobDescriptionPage.getJobDescription();
+        Assert.assertTrue("Job description appears to be empty.", !jobDescription.isEmpty());
+
+        int jobResponsibilitiesTotalNumber = jobDescriptionPage.getJobResponsibilities();
+        Assert.assertEquals("Number of responsibilities is not met.", jobResponsibilitiesTotalNumber, 9 );
+
+        int candidateRequirementsTotalNumber = jobDescriptionPage.getCandidateRequirementsList();
+        Assert.assertEquals("Number of candidate requirements is not met.", candidateRequirementsTotalNumber, 7 );
+
+        // apply now button
+        jobDescriptionPage.applyToJob();
+
+        ApplicationPageObject applicationPage = new ApplicationPageObject(driver, testStepDetails);
+        Assert.assertTrue("Application page failed to open.", applicationPage.isPageLoaded());
+
+        String applicationJobTitle = applicationPage.getJobTitle();
+        System.out.println(applicationJobTitle);
 
     }
 

@@ -2,31 +2,58 @@ package pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import support.AbstractPageObject;
+import support.AbstractSeleniumTest;
 
 public class JobDescriptionPageObject extends AbstractPageObject {
 
     private By sectionDescriptionSelector = By.id("SectionApplication");
 
-    private By responsibilitiesList = By.cssSelector("#SectionDetails > section._3jhK2kfTM6Xm > div > section:nth-child(2) > ul li");
-    private By candidateRequirementsList = By.cssSelector("#SectionDetails > section._3jhK2kfTM6Xm > div > section:nth-child(3) > ul li");
+    private By jobTitleSelector = By.xpath("//*[@id=\"SectionDetails\"]/section[1]/div/h1");
+    private By jobDescriptionSelector = By.xpath("//*[@id=\"SectionDetails\"]/section[2]/div/section[1]");
+
+    private By responsibilitiesListSelector = By.xpath("//*[@id=\"SectionDetails\"]/section[2]/div/section[2]/ul/li");
+    private By candidateRequirementsListSelector = By.xpath("//*[@id=\"SectionDetails\"]/section[2]/div/section[3]/ul/li");
+
+    private By applyNowButton = By.cssSelector("#SectionApplication > div > a");
 
     public JobDescriptionPageObject(WebDriver driver, StringBuilder steps) {
         super(driver, steps);
     }
 
     public boolean isPageLoaded() {
-        return driver.findElement(sectionDescriptionSelector).isDisplayed();
+        return waitForElementVisible(sectionDescriptionSelector) != null;
+    }
+
+    public String getJobTitle() {
+        logTestStepDetail("User is verifying the job title.");
+        return waitForElementVisible(jobTitleSelector).getText();
+    }
+
+    public String getJobDescription() {
+        logTestStepDetail("User is verifying the job description.");
+        return waitForElementVisible(jobDescriptionSelector).getText();
     }
 
     public int getJobResponsibilities() {
-        return driver.findElements(responsibilitiesList).size();
+        int totalResponsibilities = waitForElementsVisible(responsibilitiesListSelector).size();
+        logTestStepDetail("There are " + totalResponsibilities + " for this job.");
+        return totalResponsibilities;
     }
 
     public int getCandidateRequirementsList() {
-        return driver.findElements(candidateRequirementsList).size();
+        int totalRequirements = waitForElementsVisible(candidateRequirementsListSelector).size();
+        logTestStepDetail("There are " + totalRequirements + " for this job.");
+        return totalRequirements;
     }
 
+    public void applyToJob() {
+        logTestStepDetail("User wants to apply to the job!");
+        waitForElementVisible(applyNowButton).click();
+
+        // thought it will open a new tab, but weirdly it doesn't
+        AbstractSeleniumTest seleniumTest = new AbstractSeleniumTest();
+        seleniumTest.switchToNewTab();
+    }
 
 }

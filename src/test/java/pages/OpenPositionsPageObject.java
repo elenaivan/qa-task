@@ -21,18 +21,15 @@ public class OpenPositionsPageObject extends AbstractPageObject {
         return waitForElementVisible(productEngineeringSection) != null;
     }
 
-    public JobDescriptionPageObject goToJobDescription(String job) {
+    public void goToJobDescription(String job) {
         WebElement chooseJobSelector = waitForElementVisible(getJobSelector(job));
 
         if (chooseJobSelector != null) {
             logTestStepDetail("User is going to the " + job + " job description page");
             chooseJobSelector.click();
 
-            return new JobDescriptionPageObject(driver, testStepDetails);
-
         } else {
             logTestStepDetail("Job could not be found, please check.");
-            return null;
         }
     }
 

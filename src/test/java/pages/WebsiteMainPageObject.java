@@ -16,15 +16,13 @@ public class WebsiteMainPageObject extends AbstractPageObject {
         return waitForElementVisible(careersLinkSelector) != null;
     }
 
-    public CareersPageObject openCareersPage() {
+    public void openCareersPage() {
         if (isCareersLinkDisplayed()) {
             driver.findElement(careersLinkSelector).click();
             logTestStepDetail("User is trying to go to Careers page");
-            return new CareersPageObject(driver, testStepDetails);
         }
         else {
             logTestStepDetail("Element is not on the page! Careers page couldn't be opened");
-            return null;
         }
     }
 
