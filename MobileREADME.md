@@ -2,7 +2,7 @@
 
 Prerequisites:
 * the project is setup as in my example with Java, Selenium Webdriver, and Chrome
-* as an example, I took Appium framework and we assume that it is already integrated and set up to run the tests using it 
+* I took Appium as a mobile automation framework 
 
 Q1: Which parts of the code you provided would need to be adapted to run the same tests in an Android phone, using the same browser, in the tool you chose?
 
