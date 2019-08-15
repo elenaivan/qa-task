@@ -1,22 +1,23 @@
-Setting it up on mobile
+# Setting it up on mobile
+
+Prerequisites:
+* the project is setup as in my example with Java, Selenium Webdriver, and Chrome
+* as an example, I took Appium framework and we assume that it is already integrated and set up to run the tests using it 
 
 Q1: Which parts of the code you provided would need to be adapted to run the same tests in an Android phone, using the same browser, in the tool you chose?
 
-* we need to add the mobile framework (Appium or Calabash) to the configuration of the tests  
 * we need to have Chrome browser installed on Android phone 
 * chromedriver is already in the project
-* the setup should be modified to run against a server, and not locally
-* this way, we can extend the DesiredCapabilities with a new DesiredCapability for Chrome browser using Android as platform 
+* since the existing setup of the tests runs the tests locally, we need to modify the configuration and make them run against the Appium server 
+* this way, we can extend the DesiredCapabilities with a new DesiredCapability for Chrome browser using Android as platform name 
 
 Q2: How could we run these tests in a physical Android phone connected to your laptop? Does the laptop need any extra software/hardware to run them properly?
 
 * as far as I know from my current job, no special configuration is needed, because you just connect the device to the laptop and the framework recognizes that there is a device connected and starts the tests on this
-
-* we need to install on our laptop either Android Studio, or Android SDK tools (they are included in the Android studio), to be able to access the Android debugger (adb)
-* the phone needs to be connected to the laptop in development mode 
-* we need to define the connected device in the configuration of the tests, as a DesiredCapability, to be able for the tests to recognize it, same as above and same as we would define a new browser 
-* we need to set up a device name and we also need to know the device IP 
-* the device's IP can be retrieved by connecting to the device in development mode, using an adb command
+* since we would have a real Android device connected to the laptop, it would be good to have installed the Android Debugger (adb) to connect to the device 
+* adb comes usually with the Android SDK tools which are included in Android Studio, so I would install Android Studio on the laptop for debugging purpose 
+* the phone needs to allow also development mode (in the popup that shows up on the phone when connected to the phone, we should allow USB debugging) 
+* I think more things are needed in the case we run a native app on a real device 
 
 Q3: What would be the main changes if the website was now part of a hybrid Android app?
 
