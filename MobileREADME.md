@@ -15,9 +15,9 @@ Q2: How could we run these tests in a physical Android phone connected to your l
 
 * as far as I know from my current job, no special configuration is needed, because you just connect the device to the laptop and the framework recognizes that there is a device connected and starts the tests on this
 * since we would have a real Android device connected to the laptop, it would be good to have installed the Android Debugger (adb) to connect to the device 
-* adb comes usually with the Android SDK tools which are included in Android Studio, so I would install Android Studio on the laptop for debugging purposes 
+* adb comes usually with the Android SDK tools which are included in Android Studio, so I would install Android Studio on the laptop for debugging purposes - but it is not mandatory 
 * the phone needs to allow also development mode (in the popup that shows up on the phone when connected to the phone, we should allow USB debugging) 
-* I think more things are needed in the case we run a native app on a real device 
+* for the questions below (if we have a hybrid app or native app), I think that installing Android Studio and all the tools that comes with it, would be required 
 
 Q3: What would be the main changes if the website was now part of a hybrid Android app?
 
