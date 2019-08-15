@@ -28,7 +28,7 @@ Q3: What would be the main changes if the website was now part of a hybrid Andro
 * if the current test scenarios we have are the same on the hybrid app, they do not need to be modified, they should work also on the hybrid app in the WEB_VIEW context 
 * we might need to verify if the selectors are the same as on the website, and adapt them if needed
 * for NATIVE_APP context, we would need to add new selectors specific to the native app part, also some flows might be different than on the website 
-* Appium uses TouchAction for mobile specific actions, e.g. tap, double-tap, scroll, wait etc. - http://appium.io/docs/en/writing-running-appium/touch-actions/ 
+* Appium uses TouchAction for mobile specific actions, e.g. tap, double-tap, scroll, wait etc.
 
 Q4: And if it was a native app?
 
