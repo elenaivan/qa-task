@@ -35,7 +35,7 @@ Q4: And if it was a native app?
 * all the PageObjects would be different and require different selectors for the mobile app 
 * we would need to write methods to interact with these objects from the mobile pages 
 * flows and available features might be different than on the website 
-* the tests would have to be adapted 
+* the tests would have to be rewritten 
 
 # Links I used for this
 
