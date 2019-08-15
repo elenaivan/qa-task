@@ -9,7 +9,7 @@ Q1: Which parts of the code you provided would need to be adapted to run the sam
 * we need to have Chrome browser installed on Android phone 
 * chromedriver is already in the project
 * since the existing setup of the tests runs the tests locally, we need to modify the configuration and make them run against the Appium server 
-* this way, we can extend the DesiredCapabilities with a new DesiredCapability for Chrome browser using Android as platform name 
+* this way, we can extend the DesiredCapabilities with a new DesiredCapability for Chrome using Android as platform name 
 
 Q2: How could we run these tests in a physical Android phone connected to your laptop? Does the laptop need any extra software/hardware to run them properly?
 
