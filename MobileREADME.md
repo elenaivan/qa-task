@@ -15,21 +15,25 @@ Q2: How could we run these tests in a physical Android phone connected to your l
 
 * as far as I know from my current job, no special configuration is needed, because you just connect the device to the laptop and the framework recognizes that there is a device connected and starts the tests on this
 * since we would have a real Android device connected to the laptop, it would be good to have installed the Android Debugger (adb) to connect to the device 
-* adb comes usually with the Android SDK tools which are included in Android Studio, so I would install Android Studio on the laptop for debugging purpose 
+* adb comes usually with the Android SDK tools which are included in Android Studio, so I would install Android Studio on the laptop for debugging purposes 
 * the phone needs to allow also development mode (in the popup that shows up on the phone when connected to the phone, we should allow USB debugging) 
 * I think more things are needed in the case we run a native app on a real device 
 
 Q3: What would be the main changes if the website was now part of a hybrid Android app?
 
-* we need to define a path to the app we want to install on the device 
-* being hybrid app, I also assume some selectors and flows might be different than on an website 
-* we would also need to have mobile specific actions and methods defined, such as tapping or swiping 
+* we need to define the path to the app we want to install on the device (the capabilities from Appium for Android are: appActivity and appPackage) - same will be for native app 
+* but, being hybrid app, we have 2 different contexts on the app: WEB_VIEW and NATIVE_APP 
+* we would need to adapt and add new selectors specific to the native app part, also some flows might be different than on the website 
+* then, we need also to define mobile specific actions and methods defined, such as tapping or swiping 
+* if the current test flows we have are the same as on the app, they do not need to be modified, they should work also on hybrid app in the WEB_VIEW context 
 
 Q4: And if it was a native app?
 
 * all the PageObjects would be different and require different selectors for the mobile app 
-* we would need to write methods to interact with these objects from the mobile pages (e.g. tap, wait, swipe, scroll etc.)
+* we would need to write methods to interact with these objects from the mobile pages (e.g. tap, see, wait, swipe, scroll etc.)
 * flows and available features might be different than on an website 
 * the tests would have to be adapted 
-* to run the tests, we need to have the app installed previously on the device, and make sure it was launched 
-* configuration changes might be needed 
+* to run the tests, we need to install the app on the device and make further configuration changes (the desired capabilities need to be extended) - http://appium.io/docs/en/writing-running-appium/caps/index.html#general-capabilities 
+
+
+
