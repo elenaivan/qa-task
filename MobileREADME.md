@@ -21,16 +21,17 @@ Q2: How could we run these tests in a physical Android phone connected to your l
 
 Q3: What would be the main changes if the website was now part of a hybrid Android app?
 
-* we need to define the path to the app we want to install on the device (the capabilities from Appium for Android are: appActivity and appPackage) - same will be for native app 
+* we need to define the app we want to install on the device (the capabilities from Appium for Android are: appActivity and appPackage) - same will be for native app 
 * but, being hybrid app, we have 2 different contexts on the app: WEB_VIEW and NATIVE_APP 
-* we would need to adapt and add new selectors specific to the native app part, also some flows might be different than on the website 
-* then, we need also to define mobile specific actions and methods defined, such as tapping or swiping 
-* if the current test flows we have are the same as on the app, they do not need to be modified, they should work also on hybrid app in the WEB_VIEW context 
+* if the current test scenarios we have are the same on the hybrid app, they do not need to be modified, they should work also on the hybrid app in the WEB_VIEW context 
+* we might need to verify if the selectors are the same as on the website, and adapt them if needed
+* for NATIVE_APP context, we would need to add new selectors specific to the native app part, also some flows might be different than on the website 
+* Appium uses TouchAction for mobile specific actions, e.g. tap, double-tap, scroll, wait etc. - http://appium.io/docs/en/writing-running-appium/touch-actions/ 
 
 Q4: And if it was a native app?
 
 * all the PageObjects would be different and require different selectors for the mobile app 
-* we would need to write methods to interact with these objects from the mobile pages (e.g. tap, see, wait, swipe, scroll etc.)
+* we would need to write methods to interact with these objects from the mobile pages 
 * flows and available features might be different than on an website 
 * the tests would have to be adapted 
 * to run the tests, we need to install the app on the device and make further configuration changes (the desired capabilities need to be extended) - http://appium.io/docs/en/writing-running-appium/caps/index.html#general-capabilities 
