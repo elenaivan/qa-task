@@ -4,7 +4,7 @@ This is a first version of an automation testing suite with Java, Selenium WebDr
 
 # Prerequisites / Setup 
 
-- have JRE installed locally 
+- have Java installed locally 
 - have Maven installed locally
 - have ChromeDriver installed locally
 
@@ -15,7 +15,7 @@ For Mac users, you can use homebrew to install the prerequisites:
 
 This automatically adds them to the PATH. 
 
-For other operating systems, it is a bit more complicated: you need to install the dependencies locally and then add their location to the PATH, and make sure it was updated. 
+For other operating systems, it is a bit more complicated: you need to install the dependencies locally and then also add their location to the PATH, and make sure it was updated. 
 
 More instructions can be found here:
 
