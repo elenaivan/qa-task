@@ -21,7 +21,9 @@ Q2: How could we run these tests in a physical Android phone connected to your l
 
 Q3: What would be the main changes if the website was now part of a hybrid Android app?
 
-* we need to define the app we want to install on the device (the capabilities from Appium for Android are: appActivity and appPackage) - same will be for native app 
+* we need to define the app we want to install on the device 
+* further configuration changes are needed - the desired capabilities need to be extended - http://appium.io/docs/en/writing-running-appium/caps/index.html#general-capabilities - the capabilities from Appium for Android are: appActivity and appPackage) 
+* these 2 steps apply also to native app
 * but, being hybrid app, we have 2 different contexts on the app: WEB_VIEW and NATIVE_APP 
 * if the current test scenarios we have are the same on the hybrid app, they do not need to be modified, they should work also on the hybrid app in the WEB_VIEW context 
 * we might need to verify if the selectors are the same as on the website, and adapt them if needed
@@ -34,7 +36,3 @@ Q4: And if it was a native app?
 * we would need to write methods to interact with these objects from the mobile pages 
 * flows and available features might be different than on an website 
 * the tests would have to be adapted 
-* to run the tests, we need to install the app on the device and make further configuration changes (the desired capabilities need to be extended) - http://appium.io/docs/en/writing-running-appium/caps/index.html#general-capabilities 
-
-
-
